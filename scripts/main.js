@@ -1,35 +1,11 @@
-let personajesHome = [1, 2, 3];
-
-/* function printCharacters(id){
-  const url = `https://rickandmortyapi.com/api/character/${id}`
-  // let newImg = document.createElement('img')
-  // newImg.src = urlFoto
-  // let currentImg = document.getElementById('spanHijo');
-  // let referenciaPadre = currentImg.parentNode
-  // referenciaPadre.insertBefore(newImg, currentImg)
-
-  //----------Consumiendo API con promesas----------//
-  fetch(url)
-  .then(function(data){
-    return data.json()
-  })
-  .then(function(data){
-    const bloqueEnHTML =
-    `<div>
-      <img src="${data.image}" alt="Character img">
-      <p>
-        <label for="">Nombre</label>
-        <span>${data.name}</span>
-      </p>
-    </div>`
-    console.log(bloqueEnHTML)
-  })
-  .catch(function(error){
-    console.log(error)
-  })
+let personajesHome = [493, 493, 493];
+for(let i = 0; i<personajesHome.length; i++){
+  let random = Math.floor(Math.random() * ((493+1) -1) + 1);
+  personajesHome[i] =  random
+  console.log(random);
 }
-  let resultadosPromesas = personajesHome.map(printCharacters); */
-//---------------------------------------------------------------------
+//---------------------------------------------------------------------//
+
 const elemento = document.querySelector('#contenedor')
 //----------Consumiendo API con Async/Await----------//
 async function onLoad(id){
@@ -39,13 +15,20 @@ async function onLoad(id){
     return data;
   }
   try{
-    const datos = await getData(`https://rickandmortyapi.com/api/character/${id}`)
+    const datos = await getData(`https://rickandmortyapi.com/api/character/${id}`);
+    console.log(datos);
     const bloqueEnHTML =
       `<div class="item">
         <img src="${datos.image}" alt="Character img">
         <p>
-          <label for="">Nombre:</label>
-          <span>${datos.name}</span>
+          <label for="">Name: </label>
+          <span>${datos.name}</span><br>
+          <label for="">Status: </label>
+          <span>${datos.status}</span><br>
+          <label for="">Species: </label>
+          <span>${datos.species}</span><br>
+          <label for="">Gender: </label>
+          <span>${datos.gender}</span><br>
         </p>
       </div>`
     const html = document.implementation.createHTMLDocument() //creamos un document virtual
